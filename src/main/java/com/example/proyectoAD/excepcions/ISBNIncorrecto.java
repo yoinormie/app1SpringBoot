@@ -1,4 +1,4 @@
-package com.example.proyectoAD.excepciones;
+package com.example.proyectoAD.excepcions;
 
 public class ISBNIncorrecto extends RuntimeException{
     String causa;

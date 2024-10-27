@@ -2,7 +2,7 @@ package com.example.proyectoAD.controller;
 
 
 import com.example.proyectoAD.models.Libros;
-import com.example.proyectoAD.service.LibroService;
+import com.example.proyectoAD.services.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
