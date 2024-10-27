@@ -14,11 +14,12 @@ import java.util.Optional;
 public interface LibrosRepository extends JpaRepository <Libros, String> {
 
     Optional<Libros> findLibro(String ISBN);
-    @Query("SELECT l FROM libros WHERE l")
+    @Query("SELECT l FROM Libros l WHERE l.name = ?1")
     Optional<Libros> findByname(String name);
-    Optional<Libros> findbyAuthor(String author);
-    List<Libros> findAll();
-    Optional<Libros> findLibrobyInsertDate(String date);
-    Optional<Libros> findLibrobyInsertDate(LocalDate date);
+    @Query("SELECT l FROM Libros l WHERE l.author = ?1")
+    Optional<Libros> findByAuthor(String author);
+    @Query("SELECT l FROM Libros l")
+    Optional<Libros> showAll();
+    @Query("SELECT l FROM Libros l WHERE l.insertion_date = ?1")
     Optional<Libros> findLibrobyInsertDate(Date date);
 }
