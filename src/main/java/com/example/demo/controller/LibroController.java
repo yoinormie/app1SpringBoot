@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.models.Libros;
 import com.example.demo.service.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LibroController {
@@ -16,7 +18,13 @@ public class LibroController {
     }
 
     @GetMapping("/api/v1/libro1")
-    public String mostrarTitulo(){
-        return libroService.mostrarCoso().getNombre();
+    public Libros mostrarTodo(){
+        return libroService.mostrarCoso();
+    }
+
+    @ResponseStatus()
+    @PostMapping( path = "/api/v1/registro", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void insertLibro(@RequestBody Libros libro){
+        libroService.addingNewLibros(libro);
     }
 }
