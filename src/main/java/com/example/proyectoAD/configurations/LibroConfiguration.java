@@ -1,7 +1,7 @@
-package com.example.demo.configurations;
+package com.example.proyectoAD.configurations;
 
-import com.example.demo.models.Libros;
-import com.example.demo.repository.LibrosRepository;
+import com.example.proyectoAD.models.Libros;
+import com.example.proyectoAD.repository.LibrosRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

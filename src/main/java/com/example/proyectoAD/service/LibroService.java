@@ -1,12 +1,14 @@
-package com.example.demo.service;
+package com.example.proyectoAD.service;
 
-import com.example.demo.models.Libros;
-import com.example.demo.repository.LibrosRepository;
+import com.example.proyectoAD.excepciones.ISBNIncorrecto;
+import com.example.proyectoAD.models.Libros;
+import com.example.proyectoAD.repository.LibrosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class LibroService {
@@ -24,6 +26,9 @@ public Libros mostrarCoso(){
 }
 
     public void addingNewLibros(Libros libro){
+        if(librosRepository.findLibro(libro.getISBN()).equals("wawa")){
+            throw new ISBNIncorrecto("wawa");
+        }
         System.out.println(libro);
     }
 }
