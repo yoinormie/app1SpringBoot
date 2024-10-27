@@ -5,62 +5,94 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name = "libros")
 public class Libros {
+
     @Id
-    @SequenceGenerator(
-            name = "libros_sequence",
-            sequenceName = "libros_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "libros_sequence"
-    )
-    int id;
-    String nombre;
-    Date fecha;
-    String autor;
+    String ISBN;
+
+    @Column(nullable = false)
+    String name;
+    @Column(nullable = false)
+    Date insertionDate;
+    @Column(nullable = false)
+    Date lastModification;
+    @Column(nullable = false)
+    String author;
+    //@Column(nullable = false)
+    int timesRead;
+
 
     public Libros() {
     }
 
-    public Libros(int id, String nombre, Date fecha, String autor) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fecha = fecha;
-        this.autor = autor;
+    public Libros(String ISBN, String name, Date insertionDate, String author, Date lastModification, int timesRead) {
+        this.ISBN = ISBN;
+        this.name = name;
+        this.insertionDate = insertionDate;
+        this.author = author;
+        this.lastModification = lastModification;
+        this.timesRead = timesRead;
     }
 
-    public int getId() {
-        return id;
+    public String getISBN() {
+        return ISBN;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Date getInsertionDate() {
+        return insertionDate;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setInsertionDate(Date insertionDate) {
+        this.insertionDate = insertionDate;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getLastModification() {
+        return lastModification;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setLastModification(Date lastModification) {
+        this.lastModification = lastModification;
     }
 
-    public String getAutor() {
-        return autor;
+    public int getTimesRead() {
+        return timesRead;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setTimesRead(int timesRead) {
+        this.timesRead = timesRead;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "Libros{" +
+                "ISBN='" + ISBN + '\'' +
+                ", name='" + name + '\'' +
+                ", insertionDate=" + insertionDate +
+                ", lastModification=" + lastModification +
+                ", author='" + author + '\'' +
+                ", timesRead=" + timesRead +
+                '}';
     }
 }
